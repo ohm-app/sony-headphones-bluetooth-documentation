@@ -1,3 +1,30 @@
 theme:
   name: material
+  features:
+  - navigation.instant
+  palette: 
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+      primary: purple
+      accent: deep purple
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+      primary: purple
+      accent: indigo
+markdown_extensions:
+  - admonition
+  - def_list
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+  - md_in_html
 site_name: Sony Headphones Bluetooth Documentation

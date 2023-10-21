@@ -1,17 +1,12 @@
-# Welcome to MkDocs
+# Sony Headphones Bluetooth Documentation
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+This page is a collection of information about the Sony Headphones Bluetooth protocol. It is a work in progress and gets updated as we find out more about the protocol. If you have any information that you would like to add, please feel free to submit a pull request.
 
-## Commands
+## Repository
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+The repository for this documentation can be found [here](https://github.com/ohm-app/sony-headphones-bluetooth-documentation).
 
-## Project layout
+## License
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+This documentation falls under the public domain via the [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) license.
+

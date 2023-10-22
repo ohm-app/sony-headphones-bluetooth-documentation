@@ -5,7 +5,11 @@ theme:
     logo: fontawesome/solid/headphones
   features:
     - navigation.instant
+    - navigation.instant.progress
+    - navigation.sections
+    - navigation.prune
     - search.suggest
+    - navigation.top
   palette: 
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"

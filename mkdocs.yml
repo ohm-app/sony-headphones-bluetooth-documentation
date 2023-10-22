@@ -1,7 +1,11 @@
 theme:
   name: material
+  icon:
+    repo: fontawesome/brands/github
+    logo: fontawesome/solid/headphones
   features:
-  - navigation.instant
+    - navigation.instant
+    - search.suggest
   palette: 
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
@@ -28,3 +32,11 @@ markdown_extensions:
   - attr_list
   - md_in_html
 site_name: Sony Headphones Bluetooth Documentation
+extra:
+  generator: false
+repo_url: https://github.com/ohm-app/sony-headphones-bluetooth-documentation
+plugins: 
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: iso_datetime
+  - search

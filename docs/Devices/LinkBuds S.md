@@ -14,7 +14,7 @@ The tables are ordered by the time the Bluetooth messages were sent or received,
 
 ### Ambient Sound Control (AmSC)
 
-| Action                  | Type          | Handle | Length | Payload                                 |
+| Action                  | Type          | Handle | Length | Payload (Hex Decimals)                  |
 | ----------------------- | ------------- | ------ | ------ | --------------------------------------- |
 | Enable Noise Cancelling | L2CAP Send    | 0x000B | 32     | 09EF 39FF 5A00 1C40 ---- ---- ---- 3E0C |
 |                         |               |        |        | 0100 0000 0768 1701 0100 0014 A93C 2540 |

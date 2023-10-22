@@ -496,8 +496,8 @@
 
 
 <h1 id="payload-identifier">Payload Identifier</h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<div class="admonition example">
+<p class="admonition-title">Information</p>
 <p>The information on this page is incomplete.</p>
 </div>
 <p>Requests issued by the official client have some sort of payload identifier.
@@ -508,6 +508,10 @@ It has been observed that requests with length 25-32 bytes send this payload ide
 <p>The fourth-to-last byte and third-to-last byte (<code>01C3 EAA4</code>) are the payload identifier.
 The first payload identifier byte is split into two smaller bytes, <code>01</code> and <code>C3</code>, giving us <code>01 C3 EAA4</code> as the payload identifier.</p>
 <h2 id="calculating-the-payload-identifier">Calculating the Payload Identifier</h2>
+<div class="admonition bug">
+<p class="admonition-title">Investigation needed</p>
+<p>This entire section needs to be reworked. Apparently, the payload identifier is not quite calculated as described here.</p>
+</div>
 <p>The starting value for the payload identifier is yet unknown.
 However, the pattern for calculating the payload identifier for the next request <span class="arithmatex">\(Y\)</span> is known, given a previous payload identifier <span class="arithmatex">\(X\)</span>.</p>
 <p>For easier understanding, let's split our payload identifier </p>
@@ -524,7 +528,7 @@ However, the pattern for calculating the payload identifier for the next request
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-10-22 14:26:27</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-10-22 17:22:16</span>
       
         <br>
         Created:

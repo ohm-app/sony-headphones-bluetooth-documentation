@@ -1,6 +1,6 @@
 # Sony LinkBuds S
 
-## Protocol
+## Commands
 
 !!! info
     The words marked as `---- ---- ----` change on every request. Perhaps they are a counter or a nonce.

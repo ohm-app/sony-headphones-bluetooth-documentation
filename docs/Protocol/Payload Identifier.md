@@ -1,6 +1,6 @@
 # Payload Identifier
 
-!!! warning
+!!! example "Information"
     The information on this page is incomplete.
 
 Requests issued by the official client have some sort of payload identifier.
@@ -16,6 +16,9 @@ The fourth-to-last byte and third-to-last byte (`01C3 EAA4`) are the payload ide
 The first payload identifier byte is split into two smaller bytes, `01` and `C3`, giving us `01 C3 EAA4` as the payload identifier.
 
 ## Calculating the Payload Identifier
+
+!!! bug "Investigation needed"
+    This entire section needs to be reworked. Apparently, the payload identifier is not quite calculated as described here.
 
 The starting value for the payload identifier is yet unknown.
 However, the pattern for calculating the payload identifier for the next request $Y$ is known, given a previous payload identifier $X$.

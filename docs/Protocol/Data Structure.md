@@ -57,3 +57,6 @@ looking at is the last address octet.
 
 If EA=0 for the length field, then the EA bit will be followed by 15 bits of length. If EA=1, then
 only 7 bits of length will follow.
+
+## Reference
+<https://web.archive.org/web/20231022193147/https://ptgmedia.pearsoncmg.com/imprint_downloads/informit/bookreg/9780130661067/cr_ch10.pdf>

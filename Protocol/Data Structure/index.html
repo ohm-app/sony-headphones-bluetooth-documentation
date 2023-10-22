@@ -9,8 +9,10 @@
       
       
       
-        <link rel="prev" href="../Data%20Structure/">
+        <link rel="prev" href="../../Devices/LinkBuds%20S/">
       
+      
+        <link rel="next" href="../Payload%20Identifier/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -18,7 +20,7 @@
     
     
       
-        <title>Payload Identifier - Sony Headphones Bluetooth Documentation</title>
+        <title>Data Structure - Sony Headphones Bluetooth Documentation</title>
       
     
     
@@ -73,7 +75,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#payload-identifier" class="md-skip">
+        <a href="#data-structure" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Payload Identifier
+              Data Structure
             
           </span>
         </div>
@@ -374,26 +376,6 @@
                 
   
   
-  
-    <li class="md-nav__item">
-      <a href="../Data%20Structure/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Data Structure
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -409,7 +391,7 @@
           
   
   <span class="md-ellipsis">
-    Payload Identifier
+    Data Structure
   </span>
   
 
@@ -420,7 +402,7 @@
         
   
   <span class="md-ellipsis">
-    Payload Identifier
+    Data Structure
   </span>
   
 
@@ -442,9 +424,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#calculating-the-payload-identifier" class="md-nav__link">
-    Calculating the Payload Identifier
+  <a href="#rfcomm-frame" class="md-nav__link">
+    RFCOMM Frame
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extend-address-field" class="md-nav__link">
+    Extend Address Field
+  </a>
+  
+    <nav class="md-nav" aria-label="Extend Address Field">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extension-of-fields" class="md-nav__link">
+    Extension of Fields
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -452,6 +454,26 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Payload%20Identifier/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Payload Identifier
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -491,9 +513,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#calculating-the-payload-identifier" class="md-nav__link">
-    Calculating the Payload Identifier
+  <a href="#rfcomm-frame" class="md-nav__link">
+    RFCOMM Frame
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extend-address-field" class="md-nav__link">
+    Extend Address Field
+  </a>
+  
+    <nav class="md-nav" aria-label="Extend Address Field">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#extension-of-fields" class="md-nav__link">
+    Extension of Fields
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -515,44 +557,112 @@
   
 
 
-<h1 id="payload-identifier">Payload Identifier</h1>
-<div class="admonition example">
-<p class="admonition-title">Information</p>
-<p>The information on this page is incomplete.</p>
-</div>
-<p>Requests issued by the official client have some sort of payload identifier.
-It has been observed that requests with length 25-32 bytes send this payload identifier.</p>
-<p>Let's look at an example, Base16 encoded L2CAP Payload:</p>
-<div class="highlight"><pre><span></span><code>09EF 2BFF 5A00 15F0 01C3 EAA4 0015 3E01
+<h1 id="data-structure">Data Structure</h1>
+<p>The protocol uses the L2CAP and RFCOMM protocols to communicate over Bluetooth. Understanding how an
+RFCOMM frame is structured is important to understand captured Bluetooth packets.</p>
+<h2 id="rfcomm-frame">RFCOMM Frame</h2>
+<p>An RFCOMM frame consists of a header, a data section and a Frame Check Sequence (FCS).</p>
+<table>
+<thead>
+<tr>
+<th>Position in Bits</th>
+<th>Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-7</td>
+<td>Address</td>
+</tr>
+<tr>
+<td>8-15</td>
+<td>Control</td>
+</tr>
+<tr>
+<td>16-23</td>
+<td>Length</td>
+</tr>
+<tr>
+<td>24-31</td>
+<td>Length or Data</td>
+</tr>
+<tr>
+<td></td>
+<td>Data (0 - 32767 Bytes)</td>
+</tr>
+<tr>
+<td>Last 8 Bits</td>
+<td>Frame Check Sequence (FCS)</td>
+</tr>
+</tbody>
+</table>
+<p>Looking at an examplary RFCOMM frame, we can see which part of the frame is what:</p>
+<div class="highlight"><pre><span></span><code>F3EF 39FF 5A00 1C40 04E0 EA7D 001E 3E0C
+0000 0000 0768 1701 0100 0014 A83C 18B3
 </code></pre></div>
-<p>The fourth-to-last byte and third-to-last byte (<code>01C3 EAA4</code>) are the payload identifier.
-The first payload identifier byte is split into two smaller bytes, <code>01</code> and <code>C3</code>, giving us <code>01 C3 EAA4</code> as the payload identifier.</p>
-<h2 id="calculating-the-payload-identifier">Calculating the Payload Identifier</h2>
-<div class="admonition bug">
-<p class="admonition-title">Investigation needed</p>
-<p>This entire section needs to be reworked. Apparently, the payload identifier is not quite calculated as described here.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>"8 bit" means eight binary numbers. 2 binary numbers are equivalent to 1 hexadecimal number, so 8 bit are 4 hexadecimal numbers.</p>
 </div>
-<p>The starting value for the payload identifier is yet unknown.
-However, the pattern for calculating the payload identifier for the next request <span class="arithmatex">\(Y\)</span> is known, given a previous payload identifier <span class="arithmatex">\(X\)</span>.</p>
-<p>For easier understanding, let's split our payload identifier </p>
-<p><span class="arithmatex">\(X\)</span> = <code>01 C3 EAA4</code></p>
-<p>into</p>
-<p><span class="arithmatex">\(X_1\)</span> = <code>01</code>, <span class="arithmatex">\(X_2\)</span> = <code>C3</code> and <span class="arithmatex">\(X_3\)</span> = <code>EAA4</code>.</p>
-<p>The payload identifier for the next request <span class="arithmatex">\(Y\)</span> is calculated as follows:
-<span class="arithmatex">\(Y = (X_1 + 1) \circ (X_2 + 1) \circ (X_3 - 2)\)</span></p>
-<p>where <span class="arithmatex">\(\circ\)</span> is the <a href="https://en.wikipedia.org/wiki/Concatenation">concatenation</a> operator.</p>
-<p>This means, <span class="arithmatex">\(Y\)</span> would equal <code>02C4 EAA2</code> in our example.</p>
+<table>
+<thead>
+<tr>
+<th>Data (Hex)</th>
+<th>RFCOMM Frame Part</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>F3E4</code></td>
+<td>Address (The first bit of <code>F3E4</code> is 1, meaning there is only one address octet. See: <a href="#ea-field">Extend Address Field</a>)</td>
+</tr>
+<tr>
+<td><code>39FF</code></td>
+<td>Control</td>
+</tr>
+<tr>
+<td><code>5A00</code></td>
+<td>Length</td>
+</tr>
+<tr>
+<td><code>1C40</code></td>
+<td>Length or Data (The first bit of <code>5A00</code> is 0, meaning this is a length field. See: <a href="#ea-field">Extend Address Field</a>)</td>
+</tr>
+<tr>
+<td><code>04E0 EA7d 001E 3E0C 0000 0000 0768 1701 0100 0014 A83C</code></td>
+<td>Data</td>
+</tr>
+<tr>
+<td><code>18B3</code></td>
+<td>FCS</td>
+</tr>
+</tbody>
+</table>
+<h2 id="extend-address-field"><a name="ea-field"></a>Extend Address Field</h2>
+<p>The Extend Address (EA) field can extend the <em>address</em> or <em>length</em> fields. To calculate whether the
+fields will be extended by 8 more bits or not, we need to convert the field from hexadecimal to
+binary.</p>
+<p><code>F3E4</code> (Base16) = <code>1111001111100100</code>(Base2)</p>
+<p>The first bit is the <em>EA bit</em>. If it is set to 0, then extension will occur. If it is set to 1, then
+no extension will occur.</p>
+<h3 id="extension-of-fields">Extension of Fields</h3>
+<p><strong>Address Field</strong></p>
+<p>If EA=0 for the address fields, then more address octets will follow. If EA=1, then the field we are
+looking at is the last address octet.</p>
+<p><strong>Length Field</strong></p>
+<p>If EA=0 for the length field, then the EA bit will be followed by 15 bits of length. If EA=1, then
+only 7 bits of length will follow.</p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-10-22 17:22:16</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-10-22 20:25:31</span>
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-10-22 11:22:40</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-10-22 20:25:31</span>
       
     
   </small>

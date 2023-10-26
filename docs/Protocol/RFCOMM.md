@@ -1,6 +1,6 @@
-# Data Structure
+# RFCOMM
 
-The protocol uses the L2CAP and RFCOMM protocols to communicate over Bluetooth. Understanding how an
+The protocol uses the [L2CAP](L2CAP.md) and RFCOMM protocols to communicate over Bluetooth. Understanding how an
 RFCOMM frame is structured is important to understand captured Bluetooth packets.
 
 ## RFCOMM Frame

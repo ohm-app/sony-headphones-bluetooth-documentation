@@ -19,21 +19,20 @@ An RFCOMM frame consists of a header, a data section and a Frame Check Sequence 
 Looking at an examplary RFCOMM frame, we can see which part of the frame is what:
 
 ```
-F3EF 39FF 5A00 1C40 04E0 EA7D 001E 3E0C
-0000 0000 0768 1701 0100 0014 A83C 18B3
+09EF 39FF 5A00 1C40 F019 EA58 0024 3E0C
+0000 0000 0768 1701 0100 0014 A83C 1240 
 ```
 
 !!!note
-    "8 bit" means eight binary numbers. 2 binary numbers are equivalent to 1 hexadecimal number, so 8 bit are 4 hexadecimal numbers.
+    "8 bit" means eight binary numbers. 4 binary numbers are equivalent to 1 hexadecimal number, so 8 bit are 2 hexadecimal digits.
 
-| Data (Hex)                                               | RFCOMM Frame Part                                                                                                     |
-| -------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `F3E4`                                                   | Address (The first bit of `F3E4` is 1, meaning there is only one address octet. See: [Extend Address Field](#ea-field))  |
-| `39FF`                                                   | Control                                                                                                               |
-| `5A00`                                                   | Length                                                                                                                |
-| `1C40`                                                   | Length or Data (The first bit of `5A00` is 0, meaning this is a length field. See: [Extend Address Field](#ea-field)) |
-| `04E0 EA7d 001E 3E0C 0000 0000 0768 1701 0100 0014 A83C` | Data                                                                                                                  |
-| `18B3`                                                   | FCS                                                                                                                   |
+| Data (Hex) | RFCOMM Frame Part                                                                                                       |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `09`           | Address (`0x09` in binary is `0000 1001`, signaling 2 Address fields. See: [Extend Address Field](#ea-field)) |
+| `EF`           | Control                                                                                                                 |
+| `39FF`           | Length                                                                                                                  |
+|            | Data                                                                                                                    |
+| `40`       | FCS                                                                                                                     |
 
 ## <a name="ea-field"></a>Extend Address Field
 

@@ -17,8 +17,4 @@ The tables are ordered by the time the Bluetooth messages were sent or received,
 
 | Action                  | Type          | "RFCOMM Data" Payload                   |
 | ----------------------- | ------------- | --------------------------------------- |
-| Enable Noise Cancelling | L2CAP Send    | 09EF 39FF 5A00 1C40 ---- ---- ---- 3E0C |
-|                         |               | 0100 0000 0768 1701 0100 0014 A93C ---- |
-|                         | L2CAP Receive | 0BEF 1200 FF5A 0009 40DF DA00 A59A      |
-| AmSC Off                | L2CAP Send    | 09EF 39FF 5A00 1C40 ---- ---- ---- 3E0C |
-|                         |               | 0000 0000 0768 1701 0000 0014 A73C 2740 |
+| 

@@ -2,6 +2,8 @@
 
 This page is a collection of information about the Sony Headphones Bluetooth protocol. It is a work in progress and gets updated as we find out more about the protocol. If you have any information that you would like to add, please feel free to submit a pull request.
 
+The documentation is not affiliated with or endorsed by Sony Corporation or any of its subsidiaries in any way.
+
 ## Contribute
 
 If you would like to contribute to this documentation, please feel free to submit a pull request. Please make sure

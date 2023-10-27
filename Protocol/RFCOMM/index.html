@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../L2CAP/">
+        <link rel="prev" href="../../Devices/LinkBuds%20S/">
       
       
       
@@ -374,26 +374,6 @@
                 
   
   
-  
-    <li class="md-nav__item">
-      <a href="../L2CAP/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    L2CAP
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -570,7 +550,7 @@
 
 
 <h1 id="rfcomm">RFCOMM</h1>
-<p>The protocol uses the <a href="../L2CAP/">L2CAP</a> and RFCOMM protocols to communicate over Bluetooth. Understanding how an
+<p>The protocol uses the <a href="L2CAP.md">L2CAP</a> and RFCOMM protocols to communicate over Bluetooth. Understanding how an
 RFCOMM frame is structured is important to understand captured Bluetooth packets.</p>
 <h2 id="rfcomm-frame">RFCOMM Frame</h2>
 <p>An RFCOMM frame consists of a header, a data section and a Frame Check Sequence (FCS).</p>
@@ -609,12 +589,12 @@ RFCOMM frame is structured is important to understand captured Bluetooth packets
 </tbody>
 </table>
 <p>Looking at an examplary RFCOMM frame, we can see which part of the frame is what:</p>
-<div class="highlight"><pre><span></span><code>F3EF 39FF 5A00 1C40 04E0 EA7D 001E 3E0C
-0000 0000 0768 1701 0100 0014 A83C 18B3
+<div class="highlight"><pre><span></span><code>09EF 39FF 5A00 1C40 F019 EA58 0024 3E0C
+0000 0000 0768 1701 0100 0014 A83C 1240 
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>"8 bit" means eight binary numbers. 2 binary numbers are equivalent to 1 hexadecimal number, so 8 bit are 4 hexadecimal numbers.</p>
+<p>"8 bit" means eight binary numbers. 4 binary numbers are equivalent to 1 hexadecimal number, so 8 bit are 2 hexadecimal digits.</p>
 </div>
 <table>
 <thead>
@@ -625,27 +605,23 @@ RFCOMM frame is structured is important to understand captured Bluetooth packets
 </thead>
 <tbody>
 <tr>
-<td><code>F3E4</code></td>
-<td>Address (The first bit of <code>F3E4</code> is 1, meaning there is only one address octet. See: <a href="#ea-field">Extend Address Field</a>)</td>
+<td><code>09</code></td>
+<td>Address (<code>0x09</code> in binary is <code>0000 1001</code>, signaling 2 Address fields. See: <a href="#ea-field">Extend Address Field</a>)</td>
 </tr>
 <tr>
-<td><code>39FF</code></td>
+<td><code>EF</code></td>
 <td>Control</td>
 </tr>
 <tr>
-<td><code>5A00</code></td>
+<td><code>39FF</code></td>
 <td>Length</td>
 </tr>
 <tr>
-<td><code>1C40</code></td>
-<td>Length or Data (The first bit of <code>5A00</code> is 0, meaning this is a length field. See: <a href="#ea-field">Extend Address Field</a>)</td>
-</tr>
-<tr>
-<td><code>04E0 EA7d 001E 3E0C 0000 0000 0768 1701 0100 0014 A83C</code></td>
+<td></td>
 <td>Data</td>
 </tr>
 <tr>
-<td><code>18B3</code></td>
+<td><code>40</code></td>
 <td>FCS</td>
 </tr>
 </tbody>
@@ -672,7 +648,7 @@ only 7 bits of length will follow.</p>
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-10-26 09:27:03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-10-27 23:03:11</span>
       
         <br>
         Created:

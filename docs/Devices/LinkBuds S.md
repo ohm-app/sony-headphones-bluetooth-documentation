@@ -16,7 +16,7 @@
 !!! note
     The "RFCOMM Data" does not include the Address-, Control-, Length- and FCS-Bytes of the RFCOMM frame. It only includes the data payload.
 
-The tables below show the data packets sent and received for performing a given action.
+The tables below show the data packets sent for performing a given action.
 
 ### Ambient Sound Control (AmSC)
 

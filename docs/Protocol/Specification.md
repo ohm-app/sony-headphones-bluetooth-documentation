@@ -30,7 +30,7 @@ Looking at an examplary Data Capture, we can see which part of the frame is what
 | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
 | `09`                                                           | Address (`0x09` in binary is `0000 1001`, signaling 2 Address fields. See: [Extend Address Field](#ea-field)) |
 | `EF`                                                           | Control                                                                                                       |
-| `39FF 5A00`                                                    | ???                                                                                                           |
+| `39FF 5A`                                                      | ??? "Weird Bytes"                                                                                             |
 | `001C`                                                         | Length                                                                                                        |
 | `40 F019 EA58 0024 3E0C 0000 0000 0768 1701 0100 0014 A83C 12` | Data                                                                                                          |
 | `40`                                                           | FCS                                                                                                           |

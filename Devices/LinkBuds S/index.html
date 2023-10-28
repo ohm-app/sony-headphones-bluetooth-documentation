@@ -372,6 +372,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#speak-to-chat" class="md-nav__link">
+    Speak to Chat
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -500,6 +507,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#speak-to-chat" class="md-nav__link">
+    Speak to Chat
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -530,22 +544,26 @@
 <p>The data here is not yet fully understood. This simply what we know at the moment. Use this information at your own risk.</p>
 </div>
 <div class="admonition info">
-<p class="admonition-title">Info</p>
+<p class="admonition-title">Info: About the Protocol</p>
 <p>RFCOMM over L2CAP is used for communication between the LinkBuds S and the host device. If you
 are capturing Bluetooth packets, you will see the full RFCOMM data, not just the data payload.
 Read more about the <a href="../../Protocol/Specification/">data structure</a> of RFCOMM frames.</p>
 </div>
-<p>The tables below show the data packets sent and received for performing a given action.</p>
-<h3 id="ambient-sound-control-amsc">Ambient Sound Control (AmSC)</h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The italicized text in the tables below is data which is inconsistent between packets. Until this data is understood, it is being referred to as "Weird Bytes" and might as well be random. </p>
+<p>The italicized text in the tables below is data which is inconsistent between packets. Until this data is understood, it is being referred to as "Weird Bytes" and might as well be random.</p>
 </div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The "RFCOMM Data" does not include the Address-, Control-, Length- and FCS-Bytes of the RFCOMM frame. It only includes the data payload.</p>
+</div>
+<p>The tables below show the data packets sent and received for performing a given action.</p>
+<h3 id="ambient-sound-control-amsc">Ambient Sound Control (AmSC)</h3>
 <table>
 <thead>
 <tr>
 <th>Action</th>
-<th>Type</th>
+<th>Length (L2CAP)</th>
 <th>"Weird Bytes"</th>
 <th>"RFCOMM Data" Payload</th>
 </tr>
@@ -553,40 +571,65 @@ Read more about the <a href="../../Protocol/Specification/">data structure</a> o
 <tbody>
 <tr>
 <td>Ambient Sound Control Off</td>
-<td>Send</td>
+<td>32</td>
 <td>39FF 5A</td>
-<td><strong>40</strong> <em>BEDE EAC5 0027</em> <strong>3E0C 0000 0000 0768 1701 0000 0008</strong> <em>9B3C 29</em><strong>40</strong></td>
+<td><strong>40</strong> <em>BEDE EAC5 0027</em> <strong>3E0C 0000 0000 0768 1701 0000 0008</strong> <em>9B3C 29</em></td>
 </tr>
 <tr>
 <td>Noise Cancelling On</td>
-<td>Send</td>
+<td>32</td>
 <td>39FF 5A</td>
-<td><strong>40</strong> <em>ECE1 EA44 0029</em> <strong>3E0C 0100 0000 0768 1701 0100 0008</strong> <em>9D3C 23</em><strong>40</strong></td>
+<td><strong>40</strong> <em>ECE1 EA44 0029</em> <strong>3E0C 0100 0000 0768 1701 0100 0008</strong> <em>9D3C 23</em></td>
 </tr>
 <tr>
 <td>Ambient Sound: 1</td>
-<td>Send</td>
+<td>32</td>
 <td>39FF 5A</td>
-<td><strong>40</strong> <em>6005 EAFC 0029</em> <strong>3E0C 0000 0000 0768 1701 0101 0001</strong> <em>963C 31</em><strong>40</strong></td>
+<td><strong>40</strong> <em>6005 EAFC 0029</em> <strong>3E0C 0000 0000 0768 1701 0101 0001</strong> <em>963C 31</em></td>
 </tr>
 <tr>
 <td>Ambient Sound: 2</td>
-<td>Send</td>
+<td>32</td>
 <td>39FF 5A</td>
-<td><strong>40</strong> <em>6005 EAFC 0029</em> <strong>3E0C 0000 0000 0768 1701 0101 0002</strong> <em>983C 31</em><strong>40</strong></td>
+<td><strong>40</strong> <em>6005 EAFC 0029</em> <strong>3E0C 0000 0000 0768 1701 0101 0002</strong> <em>983C 31</em></td>
 </tr>
 <tr>
 <td>Ambient Sound: 3</td>
-<td>Send</td>
+<td>32</td>
 <td>39FF 5A</td>
-<td><strong>40</strong> <em>6005 EAFC 0029</em> <strong>3E0C 0000 0000 0768 1701 0101 0003</strong> <em>983C 31</em><strong>40</strong></td>
+<td><strong>40</strong> <em>6005 EAFC 0029</em> <strong>3E0C 0000 0000 0768 1701 0101 0003</strong> <em>983C 31</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="speak-to-chat">Speak to Chat</h3>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Length (L2CAP)</th>
+<th>"Weird Bytes"</th>
+<th>"RFCOMM Data" Payload</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Toggle On</td>
+<td>29</td>
+<td>33FF 5A</td>
+<td><strong>40</strong> <em>AAE1 EAD9</em> <strong>002A 0100 0000 04F8 0C00 0116 3C</strong></td>
+</tr>
+<tr>
+<td>Toggle Off</td>
+<td>29</td>
+<td>33FF 5A</td>
+<td><strong>40</strong> <em>AEE5 EAD1</em> <strong>002A 0000 0000 04F8 0C01 0116 3C</strong></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Ambient Sound Levels</p>
-<p>Ambient Sound levels go up to 20. To represent the values 4 to 20, set the bytes which were 0001, 0002 and 0003 for levels 1 to 3 respectively
-to the desired level in hexadecimal. For example, to set the level to 4, set the bytes to 0004. To set the level to 20, set the bytes to 0014.</p>
+<p>Ambient Sound levels go up to 20. To represent the values 4 to 20, set the bytes which were 0x0001, 0x0002 and 0x0003 for levels 1 to 3 respectively
+to the desired level in hexadecimal. For example, to set the level to 4, set the bytes to 0x0004. To set the level to 20, set the bytes to 0x0014, etc..</p>
 </div>
 
   <hr>
@@ -594,7 +637,7 @@ to the desired level in hexadecimal. For example, to set the level to 4, set the
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-10-28 19:57:08</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-10-28 20:30:56</span>
       
         <br>
         Created:

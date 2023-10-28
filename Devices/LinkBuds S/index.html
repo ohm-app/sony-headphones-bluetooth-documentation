@@ -525,42 +525,76 @@
 
 <h1 id="sony-linkbuds-s">Sony LinkBuds S</h1>
 <h2 id="commands">Commands</h2>
-<div class="admonition failure">
-<p class="admonition-title">Failure</p>
-<p>This entire document is being remade. Please check back later.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The data here is not yet fully understood. This simply what we know at the moment. Use this information at your own risk.</p>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>RFCOMM over L2CAP is used for communication between the LinkBuds S and the host device. If you
 are capturing Bluetooth packets, you will see the full RFCOMM data, not just the data payload.
-Read more about the <a href="../Protocol/Data%20Structure.md">data structure</a> of RFCOMM frames.</p>
+Read more about the <a href="../../Protocol/Specification/">data structure</a> of RFCOMM frames.</p>
 </div>
-<p>The tables below show the packets sent and received for performing a given action.
-The tables are ordered by the time the Bluetooth messages were sent or received, with the first message at the top.</p>
+<p>The tables below show the data packets sent and received for performing a given action.</p>
 <h3 id="ambient-sound-control-amsc">Ambient Sound Control (AmSC)</h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The italicized text in the tables below is data which is inconsistent between packets. Until this data is understood, it is being referred to as "Weird Bytes" and might as well be random. </p>
+</div>
 <table>
 <thead>
 <tr>
 <th>Action</th>
 <th>Type</th>
+<th>"Weird Bytes"</th>
 <th>"RFCOMM Data" Payload</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td>Ambient Sound Control Off</td>
+<td>Send</td>
+<td>39FF 5A</td>
+<td><strong>40</strong> <em>BEDE EAC5 0027</em> <strong>3E0C 0000 0000 0768 1701 0000 0008</strong> <em>9B3C 29</em><strong>40</strong></td>
+</tr>
+<tr>
+<td>Noise Cancelling On</td>
+<td>Send</td>
+<td>39FF 5A</td>
+<td><strong>40</strong> <em>ECE1 EA44 0029</em> <strong>3E0C 0100 0000 0768 1701 0100 0008</strong> <em>9D3C 23</em><strong>40</strong></td>
+</tr>
+<tr>
+<td>Ambient Sound: 1</td>
+<td>Send</td>
+<td>39FF 5A</td>
+<td><strong>40</strong> <em>6005 EAFC 0029</em> <strong>3E0C 0000 0000 0768 1701 0101 0001</strong> <em>963C 31</em><strong>40</strong></td>
+</tr>
+<tr>
+<td>Ambient Sound: 2</td>
+<td>Send</td>
+<td>39FF 5A</td>
+<td><strong>40</strong> <em>6005 EAFC 0029</em> <strong>3E0C 0000 0000 0768 1701 0101 0002</strong> <em>983C 31</em><strong>40</strong></td>
+</tr>
+<tr>
+<td>Ambient Sound: 3</td>
+<td>Send</td>
+<td>39FF 5A</td>
+<td><strong>40</strong> <em>6005 EAFC 0029</em> <strong>3E0C 0000 0000 0768 1701 0101 0003</strong> <em>983C 31</em><strong>40</strong></td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Ambient Sound Levels</p>
+<p>Ambient Sound levels go up to 20. To represent the values 4 to 20, set the bytes which were 0001, 0002 and 0003 for levels 1 to 3 respectively
+to the desired level in hexadecimal. For example, to set the level to 4, set the bytes to 0004. To set the level to 20, set the bytes to 0014.</p>
+</div>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-10-27 23:03:11</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-10-28 19:57:08</span>
       
         <br>
         Created:

@@ -1,8 +1,6 @@
-# Packets
+# Specification
 
 The protocol uses RFCOMM-like protocols on top of L2CAP to communicate over Bluetooth.
-
-## Specification
 
 !!!note
     The protocol used here seems to be a custom protocol, built on RFCOMM.

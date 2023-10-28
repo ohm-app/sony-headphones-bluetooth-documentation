@@ -18,7 +18,7 @@
     
     
       
-        <title>RFCOMM - Sony Headphones Bluetooth Documentation</title>
+        <title>Packets - Sony Headphones Bluetooth Documentation</title>
       
     
     
@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rfcomm" class="md-skip">
+        <a href="#packets" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              RFCOMM
+              Packets
             
           </span>
         </div>
@@ -389,7 +389,7 @@
           
   
   <span class="md-ellipsis">
-    RFCOMM
+    Packets
   </span>
   
 
@@ -400,7 +400,7 @@
         
   
   <span class="md-ellipsis">
-    RFCOMM
+    Packets
   </span>
   
 
@@ -422,8 +422,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#rfcomm-frame" class="md-nav__link">
-    RFCOMM Frame
+  <a href="#specification" class="md-nav__link">
+    Specification
   </a>
   
 </li>
@@ -498,8 +498,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#rfcomm-frame" class="md-nav__link">
-    RFCOMM Frame
+  <a href="#specification" class="md-nav__link">
+    Specification
   </a>
   
 </li>
@@ -549,11 +549,14 @@
   
 
 
-<h1 id="rfcomm">RFCOMM</h1>
-<p>The protocol uses the <a href="L2CAP.md">L2CAP</a> and RFCOMM protocols to communicate over Bluetooth. Understanding how an
-RFCOMM frame is structured is important to understand captured Bluetooth packets.</p>
-<h2 id="rfcomm-frame">RFCOMM Frame</h2>
-<p>An RFCOMM frame consists of a header, a data section and a Frame Check Sequence (FCS).</p>
+<h1 id="packets">Packets</h1>
+<p>The protocol uses RFCOMM-like protocols on top of L2CAP to communicate over Bluetooth.</p>
+<h2 id="specification">Specification</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The protocol used here seems to be a custom protocol, built on RFCOMM.</p>
+</div>
+<p>The packages consist of a header, a data section and a Frame Check Sequence (FCS).</p>
 <table>
 <thead>
 <tr>
@@ -563,20 +566,20 @@ RFCOMM frame is structured is important to understand captured Bluetooth packets
 </thead>
 <tbody>
 <tr>
-<td>0-7</td>
+<td>1-8</td>
 <td>Address</td>
 </tr>
 <tr>
-<td>8-15</td>
+<td>9-16</td>
 <td>Control</td>
 </tr>
 <tr>
-<td>16-23</td>
-<td>Length</td>
+<td>17-40</td>
+<td>???</td>
 </tr>
 <tr>
-<td>24-31</td>
-<td>Length or Data</td>
+<td>25-32</td>
+<td>Length</td>
 </tr>
 <tr>
 <td></td>
@@ -588,14 +591,14 @@ RFCOMM frame is structured is important to understand captured Bluetooth packets
 </tr>
 </tbody>
 </table>
-<p>Looking at an examplary RFCOMM frame, we can see which part of the frame is what:</p>
-<div class="highlight"><pre><span></span><code>09EF 39FF 5A00 1C40 F019 EA58 0024 3E0C
-0000 0000 0768 1701 0100 0014 A83C 1240 
-</code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>"8 bit" means eight binary numbers. 4 binary numbers are equivalent to 1 hexadecimal number, so 8 bit are 2 hexadecimal digits.</p>
 </div>
+<p>Looking at an examplary Data Capture, we can see which part of the frame is what:</p>
+<div class="highlight"><pre><span></span><code>09EF 39FF 5A00 1C40 F019 EA58 0024 3E0C
+0000 0000 0768 1701 0100 0014 A83C 1240 
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -613,11 +616,15 @@ RFCOMM frame is structured is important to understand captured Bluetooth packets
 <td>Control</td>
 </tr>
 <tr>
-<td><code>39FF</code></td>
+<td><code>39FF 5A00</code></td>
+<td>???</td>
+</tr>
+<tr>
+<td><code>001C</code></td>
 <td>Length</td>
 </tr>
 <tr>
-<td></td>
+<td><code>40 F019 EA58 0024 3E0C 0000 0000 0768 1701 0100 0014 A83C 12</code></td>
 <td>Data</td>
 </tr>
 <tr>
@@ -641,18 +648,20 @@ looking at is the last address octet.</p>
 <p>If EA=0 for the length field, then the EA bit will be followed by 15 bits of length. If EA=1, then
 only 7 bits of length will follow.</p>
 <h2 id="reference">Reference</h2>
-<p><a href="https://web.archive.org/web/20231022193147/https://ptgmedia.pearsoncmg.com/imprint_downloads/informit/bookreg/9780130661067/cr_ch10.pdf">https://web.archive.org/web/20231022193147/https://ptgmedia.pearsoncmg.com/imprint_downloads/informit/bookreg/9780130661067/cr_ch10.pdf</a></p>
+<ul>
+<li>RFCOMM Spec: <a href="https://web.archive.org/web/20231022193147/https://ptgmedia.pearsoncmg.com/imprint_downloads/informit/bookreg/9780130661067/cr_ch10.pdf">https://web.archive.org/web/20231022193147/https://ptgmedia.pearsoncmg.com/imprint_downloads/informit/bookreg/9780130661067/cr_ch10.pdf</a></li>
+</ul>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-10-27 23:03:11</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-10-28 17:12:34</span>
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-10-22 20:25:31</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_datetime">2023-10-28 17:12:34</span>
       
     
   </small>
